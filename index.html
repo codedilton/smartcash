@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta name="description" content="SmartCash - controle financeiro pessoal">
+  <title>SmartCash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="SmartCash início">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Smart<span>Cash</span></span>
+      </a>
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Alternar tema" title="Alternar tema">◐</button>
+    </header>
+
+    <section class="dashboard" aria-label="Resumo financeiro">
+      <article class="balance-card">
+        <div>
+          <p class="eyebrow">Saldo disponível</p>
+          <h1 id="balance-total">R$ 0,00</h1>
+        </div>
+        <span class="balance-trend" id="balance-status">Em equilíbrio</span>
+      </article>
+
+      <div class="summary-grid">
+        <article class="summary-card income-card">
+          <span class="summary-icon" aria-hidden="true">↗</span>
+          <div>
+            <p>Entradas</p>
+            <strong id="income-total">R$ 0,00</strong>
+          </div>
+        </article>
+
+        <article class="summary-card expense-card">
+          <span class="summary-icon" aria-hidden="true">↘</span>
+          <div>
+            <p>Saídas</p>
+            <strong id="expense-total">R$ 0,00</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="transaction-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Nova operação</p>
+            <h2>Adicionar transação</h2>
+          </div>
+        </div>
+
+        <form id="transaction-form" novalidate>
+          <label for="description">Descrição</label>
+          <input id="description" name="description" type="text" maxlength="40" placeholder="Ex.: Salário" autocomplete="off">
+
+          <label for="amount">Valor</label>
+          <div class="amount-field">
+            <span>R$</span>
+            <input id="amount" name="amount" type="number" step="0.01" placeholder="0,00" inputmode="decimal">
+          </div>
+          <p class="field-help">Use valor positivo para entrada e negativo para saída.</p>
+
+          <p id="form-error" class="form-error" role="alert"></p>
+          <button class="submit-button" type="submit">Adicionar transação <span aria-hidden="true">+</span></button>
+        </form>
+      </aside>
+
+      <section class="statement-panel" aria-labelledby="statement-title">
+        <div class="section-heading statement-heading">
+          <div>
+            <p class="eyebrow">Movimentações</p>
+            <h2 id="statement-title">Extrato</h2>
+          </div>
+          <span id="transaction-count" class="count-badge">0 itens</span>
+        </div>
+
+        <div class="statement-list" id="statement-list" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+
+  <template id="empty-template">
+    <div class="empty-state">
+      <span aria-hidden="true">$</span>
+      <h3>Nenhuma transação</h3>
+      <p>Adicione sua primeira movimentação ao lado.</p>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
